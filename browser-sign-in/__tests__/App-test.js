@@ -15,33 +15,13 @@ import App from '../App';
 import { shallow, render } from 'enzyme';
 import renderer from 'react-test-renderer';
 import { waitForState } from 'enzyme-async-helpers';
+import { NativeEventEmitter } from 'react-native';
 
-import { NativeModules, NativeEventEmitter } from 'react-native';
-
-jest.mock('NativeEventEmitter');
+jest.mock(
+  '../node_modules/react-native/Libraries/EventEmitter/NativeEventEmitter',
+);
 
 const nativeEmitter = new NativeEventEmitter();
-
-jest.mock('NativeModules', () => {
-  return {
-    OktaSdkBridge: {
-      createConfig: jest.fn(),
-      signIn: jest.fn(),
-      signOut: jest.fn(),
-      getAccessToken: jest.fn(),
-      getIdToken: jest.fn(),
-      getUser: jest.fn(),
-      isAuthenticated: jest.fn(),
-      revokeAccessToken: jest.fn(),
-      revokeIdToken: jest.fn(),
-      revokeRefreshToken: jest.fn(),
-      introspectAccessToken: jest.fn(),
-      introspectIdToken: jest.fn(),
-      introspectRefreshToken: jest.fn(),
-      refreshTokens: jest.fn(),
-    }
-  }
-});
 
 jest
   .mock(

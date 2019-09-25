@@ -54,7 +54,7 @@ Array [
           accessibilityRole="button"
           accessibilityStates={Array []}
           accessible={true}
-          clickable={true}
+          focusable={true}
           isTVSelectable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
